@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/drawable/system_background.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/drawable/system_button.xml" value="0.2" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/drawable/system_button_disabled.xml" value="0.221875" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/drawable/system_button_hover.xml" value="0.2" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/drawable/system_button_pressed.xml" value="0.2" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/drawable/system_button_selector.xml" value="0.2" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/drawable/system_text_selector.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/activity_iptv.xml" value="0.1890625" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/activity_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/activity_setup.xml" value="0.1" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/activity_splash.xml" value="0.12454710144927536" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/activty_expire.xml" value="0.3546875" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_configuration.xml" value="0.1" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_expiration.xml" value="0.1" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_expiry_monitor.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_guest.xml" value="0.22760416666666666" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_information.xml" value="0.22760416666666666" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_room.xml" value="0.22760416666666666" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_splash.xml" value="0.1" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_weather.xml" value="0.22760416666666666" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
