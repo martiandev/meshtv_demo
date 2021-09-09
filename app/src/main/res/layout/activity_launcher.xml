@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/bg"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -40,6 +40,12 @@
         app:layout_constraintRight_toLeftOf="@+id/gl_v_2"
         app:layout_constraintTop_toBottomOf="@+id/gl_h_1"
         app:layout_constraintBottom_toTopOf="@+id/gl_h_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fc_xmpp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="0dp"
         android:layout_height="0dp"/>
 

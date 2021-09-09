@@ -15,14 +15,21 @@
         <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/activity_setup.xml" value="0.1" />
         <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/activity_splash.xml" value="0.12454710144927536" />
         <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/activty_expire.xml" value="0.3546875" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_app.xml" value="0.1" />
         <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_configuration.xml" value="0.1" />
         <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_expiration.xml" value="0.1" />
         <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_expiry_monitor.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_guest.xml" value="0.22760416666666666" />
         <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_information.xml" value="0.22760416666666666" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_iptv_channel.xml" value="0.21979166666666666" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_iptv_facility.xml" value="0.2046875" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_iptv_home.xml" value="0.21875" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_iptv_message.xml" value="0.2046875" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_iptv_weather.xml" value="0.2046875" />
         <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_room.xml" value="0.22760416666666666" />
         <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_splash.xml" value="0.1" />
         <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/fragment_weather.xml" value="0.22760416666666666" />
+        <entry key="..\:/Users/Mars/Desktop/TO/Code/MeshTV/app/src/main/res/layout/item_app.xml" value="0.12952898550724637" />
       </map>
     </option>
   </component>

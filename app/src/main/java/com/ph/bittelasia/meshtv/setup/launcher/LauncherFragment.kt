@@ -9,9 +9,15 @@ import com.ph.bittelasia.meshtvlibrary.fragment.launcher.DefaultLauncherFragment
 class LauncherFragment:DefaultLauncherFragment() {
 
     //================================= DefaultLauncherFragment ====================================
-    override fun getConfigurationActivity(): Class<*> { return ConfigurationActivity::class.java }
-    override fun getExpiredActivity(): Class<*> { return ExpirationActivity::class.java }
-    override fun getSplashActivity(): Class<*> { return SplashActivity::class.java }
+    override fun getConfigurationActivity(): Class<*> {
+        return ConfigurationActivity::class.java
+    }
+    override fun getExpiredActivity(): Class<*> {
+        return ExpirationActivity::class.java
+    }
+    override fun getSplashActivity(): Class<*> {
+        return SplashActivity::class.java
+    }
     override fun onNewMessage(from: String, body: String) {}
     override fun startHome() {}
     //==============================================================================================
