@@ -34,6 +34,7 @@ class InfoFragment: Fragment(),
         childFragmentManager.beginTransaction().add(R.id.fc_room_info,roomFragment!!,"Room").commit()
         childFragmentManager.beginTransaction().add(R.id.fc_time,weatherFragment!!,"weather").commit()
         fc_expiry = view.findViewById(R.id.fc_expiry)
+        fc_expiry!!.visibility = View.GONE
     }
     //==============================================================================================
     //========================================== ExpiryMonitor =====================================

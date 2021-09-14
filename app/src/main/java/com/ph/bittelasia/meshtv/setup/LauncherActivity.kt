@@ -36,8 +36,6 @@ class LauncherActivity:AppCompatActivity(),
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launcher)
-
-
         this.launcherFragment = LauncherFragment()
         this.xmppFragment = XMPPFragment()
         supportFragmentManager.beginTransaction().add(R.id.fc_main, this.launcherFragment!!,"LAUNCHER").commit()

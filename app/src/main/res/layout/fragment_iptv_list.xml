@@ -4,26 +4,33 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fc_category"
-        android:padding="8dp"
+    <TextView
+        android:id="@+id/tv_label"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:background="@drawable/item_background"
+        android:textColor="@color/h_inn_green"
+        android:text="Nothing to display"
+        android:textAlignment="center"
+        android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintHorizontal_weight="0.3"
-        app:layout_constraintRight_toLeftOf="@+id/fc_object"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fc_object"
-        android:layout_margin="8dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_items"
+        android:visibility="gone"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintHorizontal_weight="0.7"
-        app:layout_constraintLeft_toRightOf="@+id/fc_category"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

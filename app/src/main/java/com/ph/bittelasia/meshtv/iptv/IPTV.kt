@@ -16,6 +16,7 @@ import com.ph.bittelasia.meshtv.setup.launcher.LauncherFragment
 import com.ph.bittelasia.meshtv.setup.xmpp.XMPPFragment
 import com.ph.bittelasia.meshtvlibrary.fragment.data.XMPPUpdateFragment
 import com.ph.bittelasia.meshtvlibrary.xmpp.instant_display.Message
+import java.util.*
 
 class IPTV:AppCompatActivity(),
         XMPPUpdateFragment.XMPPUpdateListener
@@ -51,7 +52,7 @@ class IPTV:AppCompatActivity(),
          }
         else
          {
-             super.onBackPressed()
+
          }
     }
     //==============================================================================================
@@ -61,7 +62,6 @@ class IPTV:AppCompatActivity(),
         this.appFragment = AppFragment()
         this.infoFragment = InfoFragment()
         this.xmppFragment = XMPPFragment()
-
         this.homeFragment = HomeFragment()
         this.tvFragment = TVFragment()
         this.facilityFragment = FacilityFragment()
@@ -70,7 +70,7 @@ class IPTV:AppCompatActivity(),
     }
     fun attachFragments()
     {
-        supportFragmentManager.beginTransaction().add(R.id.fc_top,this.homeFragment!!,"HOME").commit()
+        supportFragmentManager.beginTransaction().add(R.id.fc_main,this.homeFragment!!,"HOME").commit()
         supportFragmentManager.beginTransaction().add(R.id.fc_top,this.infoFragment!!,"INFO").commit()
         supportFragmentManager.beginTransaction().add(R.id.fc_xmpp,this.xmppFragment!!,"XMPP").commit()
         supportFragmentManager.beginTransaction().add(R.id.fc_app, this.appFragment!!,"APP").commit()
@@ -85,27 +85,25 @@ class IPTV:AppCompatActivity(),
     fun selectApplication(app:Int)
     {
         var content = supportFragmentManager.findFragmentById(R.id.fc_main)
-        if(content!=null)
-        {
+        if(content!=null) {
             supportFragmentManager.beginTransaction().remove(content).commit()
-            displayApps(true)
         }
 
         when(app)
         {
-            HomeFragment.APP_ID -> {supportFragmentManager.beginTransaction().add(R.id.fc_top,this.homeFragment!!,"HOME").commit()
+            HomeFragment.APP_ID -> {supportFragmentManager.beginTransaction().add(R.id.fc_main,this.homeFragment!!,"HOME").commit()
+                displayApps(true)
+            }
+            TVFragment.APP_ID -> {supportFragmentManager.beginTransaction().add(R.id.fc_main, this.tvFragment!!,"TV").commit()
                 displayApps(false)
             }
-            TVFragment.APP_ID -> {supportFragmentManager.beginTransaction().add(R.id.fc_app, this.tvFragment!!,"TV").commit()
+            FacilityFragment.APP_ID -> {supportFragmentManager.beginTransaction().add(R.id.fc_main, this.facilityFragment!!,"FACILITY").commit()
                 displayApps(false)
             }
-            FacilityFragment.APP_ID -> {supportFragmentManager.beginTransaction().add(R.id.fc_app, this.facilityFragment!!,"FACILITY").commit()
+            MessageFragment.APP_ID -> {supportFragmentManager.beginTransaction().add(R.id.fc_main, this.messageFragment!!,"MESSAGE").commit()
                 displayApps(false)
             }
-            MessageFragment.APP_ID -> {supportFragmentManager.beginTransaction().add(R.id.fc_app, this.messageFragment!!,"MESSAGE").commit()
-                displayApps(false)
-            }
-            WeatherFragment.APP_ID -> {supportFragmentManager.beginTransaction().add(R.id.fc_app, this.weatherFragment!!,"WEATHER").commit()
+            WeatherFragment.APP_ID -> {supportFragmentManager.beginTransaction().add(R.id.fc_main, this.weatherFragment!!,"WEATHER").commit()
                 displayApps(false)
             }
         }
