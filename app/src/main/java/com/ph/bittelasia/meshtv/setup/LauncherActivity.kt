@@ -15,7 +15,22 @@ import com.ph.bittelasia.meshtv.setup.xmpp.XMPPFragment
 import com.ph.bittelasia.meshtvlibrary.fragment.data.XMPPUpdateFragment
 import com.ph.bittelasia.meshtvlibrary.xmpp.instant_display.Message
 
-
+/**
+ * Set-up a launcher activity
+ * 0. Add Launcher Activity to manifest
+ * 1. Extend AppCompatActivity
+ * 2. Override onCreate
+ *      2.1. Create an Instance of SignageViewModel to load Signage for Digital Signage
+ *      2.2. Create an Instance of the LauncherFragment
+ *      2.3. Create an Instance of the XMPPFragment
+ *      2.4. Attach launcherFragment
+ *      2.5. Attach xmppFragment
+ * 5. Implement DefaultLauncherFragment.LauncherCallBack
+ *      5.1. override launchDigitalSignageMethod and request the assigned signage using the SinageViewModel instance
+ *      5.2. override launchIPTV and launch the IPTV activity in this demo its IPTV.kt
+ * 6. Implement XMPPUpdateFragment.XMPPUpdateListener
+ *      6.1. override isSoleReceiver should be set to false
+ */
 class LauncherActivity:AppCompatActivity(),
     DefaultLauncherFragment.LauncherCallBack,
     XMPPUpdateFragment.XMPPUpdateListener
@@ -51,9 +66,9 @@ class LauncherActivity:AppCompatActivity(),
             {
                 if(it.size>0)
                 {
-//                    var i: Intent = Intent(this, DS::class.java)
-//                    i.putExtra(DSActivity.TAG_LAYOUT,it.get(0).layout_id)
-//                    startActivity(i)
+                    //var i: Intent = Intent(this, DS::class.java)
+                    //i.putExtra(DSActivity.TAG_LAYOUT,it.get(0).layout_id)
+                    //startActivity(i)
                 }
             }
         )
@@ -66,28 +81,12 @@ class LauncherActivity:AppCompatActivity(),
     }
     //==============================================================================================
     //========================================== XMPP Update =======================================
-    override fun isSoleReceiver(): Boolean {
-        return false
-    }
-
-    override fun onEmergecy(m: Message) {
-    }
-
-    override fun onPop(m: Message) {
-    }
-
-    override fun onReset() {
-    }
-
-    override fun onResetData() {
-    }
-
-    override fun onResetLicense() {
-    }
-
-    override fun onResetSTB() {
-    }
+    override fun isSoleReceiver(): Boolean { return false }
+    override fun onEmergecy(m: Message) {}
+    override fun onPop(m: Message) {}
+    override fun onReset() {}
+    override fun onResetData() {}
+    override fun onResetLicense() {}
+    override fun onResetSTB() {}
     //==============================================================================================
-
-
 }

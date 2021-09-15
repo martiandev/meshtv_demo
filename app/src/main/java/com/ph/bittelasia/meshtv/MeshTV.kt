@@ -4,14 +4,16 @@ import android.app.Application
 import com.ph.bittelasia.meshtvlibrary.util.MeshInitiator
 
 /**
- * Override default application to initiate Managers
+ * Extend default application to initiate Managers
+ * 1. Override application onCreate Lifecycle method
+ * 2. Initiate managers required for MeshTV to work
  */
 class MeshTV :Application(){
 
-    //Override Application onCreate Lifecycle method
+    //1
     override fun onCreate() {
         super.onCreate()
-        //Initiates managers required for MeshTV to work
+        //2
         MeshInitiator.initiate(this)
     }
 }

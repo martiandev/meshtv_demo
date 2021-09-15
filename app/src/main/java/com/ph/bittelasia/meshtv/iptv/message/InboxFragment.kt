@@ -1,5 +1,6 @@
 package com.ph.bittelasia.meshtv.iptv.message
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,9 @@ class InboxFragment(): Fragment() {
     //---------------------------------------- ViewModel -------------------------------------------
     var mvm:MeshMessageViewModel ? = null
     //----------------------------------------------------------------------------------------------
+    //----------------------------------------- Listener -------------------------------------------
+    var listener:ClickListener ? = null
+    //----------------------------------------------------------------------------------------------
     //------------------------------------------ View ----------------------------------------------
     var rv_category: RecyclerView? = null
     //----------------------------------------------------------------------------------------------
@@ -24,12 +28,19 @@ class InboxFragment(): Fragment() {
     //----------------------------------------------------------------------------------------------
     //==============================================================================================
     //========================================= Constructor ========================================
-    constructor(mvm: MeshMessageViewModel):this()
+    constructor(mvm: MeshMessageViewModel,listener:ClickListener):this()
     {
         this.mvm = mvm
+        this.listener = listener
     }
+
     //==============================================================================================
     //========================================= LifeCycle ==========================================
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+   }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_category,container,false)
     }
@@ -38,6 +49,12 @@ class InboxFragment(): Fragment() {
         this.rv_category = view.findViewById(R.id.rv_category)
         this.rv_category!!.layoutManager = LinearLayoutManager(requireActivity())
     }
+
+    override fun onDetach() {
+        super.onDetach()
+        this.listener = null
+    }
+
     //==============================================================================================
     //======================================== Messages ==========================================
     fun updateMessages(messages:List<MeshMessage>)
@@ -45,10 +62,15 @@ class InboxFragment(): Fragment() {
         if(isAdded)
         {
             this.messages = messages
-            this.rv_category!!.adapter = InboxAdapter(requireActivity(),this.messages!!.reversed())
+            this.rv_category!!.adapter = InboxAdapter(requireActivity(),this.messages!!.reversed(),listener!!)
         }
 
     }
     //==============================================================================================
-
+    //======================================== Listener ============================================
+    interface ClickListener
+    {
+        abstract fun onClick(m:MeshMessage)
+    }
+    //==============================================================================================
 }

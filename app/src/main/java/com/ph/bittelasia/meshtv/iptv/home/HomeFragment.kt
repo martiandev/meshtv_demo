@@ -17,8 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import java.io.File
 
-class HomeFragment: Fragment(),
-ImageLoaderListener{
+class HomeFragment:Fragment(), ImageLoaderListener{
     //=========================================== Variable =========================================
     //------------------------------------------- Constant -----------------------------------------
     companion object
@@ -39,24 +38,17 @@ ImageLoaderListener{
         super.onCreate(savedInstanceState)
         this.config = MeshConfig(requireContext())
         ConfigPreference.get()!!.load(this.config!!)
-
-
     }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return LayoutInflater.from(container!!.context).inflate(R.layout.fragment_iptv_home,container,false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadViews(view)
         load()
-
     }
     override fun onDetach() {
         super.onDetach()
-
-
     }
     //==============================================================================================
     //========================================== Method ============================================
@@ -73,16 +65,13 @@ ImageLoaderListener{
     }
     //==============================================================================================
     //==================================== ImageLoaderListener =====================================
-    override fun onFail(message: String) {
-
-    }
+    override fun onFail(message: String) {}
     override fun onSuccess(file: File, iv: ImageView) {
         requireActivity()!!.runOnUiThread(java.lang.Runnable {
             Glide.with(this)
                 .load(file!!.absolutePath)
                 .into(iv!!)
         })
-
     }
     //==============================================================================================
 
