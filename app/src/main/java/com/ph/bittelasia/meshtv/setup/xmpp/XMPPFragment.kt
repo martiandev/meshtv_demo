@@ -4,7 +4,8 @@ import com.ph.bittelasia.meshtvlibrary.fragment.data.XMPPUpdateFragment
 
 class XMPPFragment:XMPPUpdateFragment()
 {
-    override fun reboot() {
+
+    override fun reboot(target: Int) {
 
     }
 

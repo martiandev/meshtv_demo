@@ -1,22 +1,21 @@
 package com.ph.bittelasia.meshtv.iptv
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.ph.bittelasia.meshtv.R
 import com.ph.bittelasia.meshtv.iptv.app.AppFragment
 import com.ph.bittelasia.meshtv.iptv.channel.TVFragment
+import com.ph.bittelasia.meshtv.iptv.customizable.MainBGFragment
 import com.ph.bittelasia.meshtv.iptv.facility.FacilityFragment
 import com.ph.bittelasia.meshtv.iptv.home.HomeFragment
 import com.ph.bittelasia.meshtv.iptv.info.InfoFragment
 import com.ph.bittelasia.meshtv.iptv.message.MessageFragment
 import com.ph.bittelasia.meshtv.iptv.weather.WeatherFragment
-import com.ph.bittelasia.meshtv.setup.launcher.LauncherFragment
 import com.ph.bittelasia.meshtv.setup.xmpp.XMPPFragment
 import com.ph.bittelasia.meshtvlibrary.fragment.data.XMPPUpdateFragment
+import com.ph.bittelasia.meshtvlibrary.viewmodel.iptv.MeshWeatherDailyViewModel
 import com.ph.bittelasia.meshtvlibrary.xmpp.instant_display.Message
-import java.util.*
 
 class IPTV:AppCompatActivity(),
         XMPPUpdateFragment.XMPPUpdateListener
@@ -28,11 +27,12 @@ class IPTV:AppCompatActivity(),
     var appFragment : AppFragment? = null
     //----------------------------------------------------------------------------------------------
     //------------------------------------- IPTV-Fragment ------------------------------------------
-    var homeFragment:HomeFragment ? = null
-    var tvFragment:TVFragment ? = null
-    var facilityFragment:FacilityFragment ? = null
-    var messageFragment:MessageFragment ? = null
+    var homeFragment: HomeFragment ? = null
+    var tvFragment: TVFragment ? = null
+    var facilityFragment: FacilityFragment ? = null
+    var messageFragment: MessageFragment ? = null
     var weatherFragment: WeatherFragment? = null
+    var bgFragment: MainBGFragment? = null
     //----------------------------------------------------------------------------------------------
     //==============================================================================================
     //======================================== LifeCycle ===========================================
@@ -41,6 +41,8 @@ class IPTV:AppCompatActivity(),
         setContentView(R.layout.activity_iptv)
         load()
         attachFragments()
+        var daily:MeshWeatherDailyViewModel = MeshWeatherDailyViewModel.getViewModel(this)
+        daily.getWeatherNow()
     }
 
     //==============================================================================================
@@ -67,13 +69,14 @@ class IPTV:AppCompatActivity(),
         this.facilityFragment = FacilityFragment()
         this.messageFragment = MessageFragment()
         this.weatherFragment = WeatherFragment()
+        this.bgFragment = MainBGFragment(this.appFragment!!)
     }
     fun attachFragments()
     {
         supportFragmentManager.beginTransaction().add(R.id.fc_main,this.homeFragment!!,"HOME").commit()
         supportFragmentManager.beginTransaction().add(R.id.fc_top,this.infoFragment!!,"INFO").commit()
         supportFragmentManager.beginTransaction().add(R.id.fc_xmpp,this.xmppFragment!!,"XMPP").commit()
-        supportFragmentManager.beginTransaction().add(R.id.fc_app, this.appFragment!!,"APP").commit()
+        supportFragmentManager.beginTransaction().add(R.id.fc_app, this.bgFragment!!,"APP").commit()
 
     }
     //==============================================================================================

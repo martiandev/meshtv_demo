@@ -11,8 +11,7 @@ import com.ph.bittelasia.meshtvlibrary.fragment.weather.DefaultDailyWeatherForec
 import java.text.SimpleDateFormat
 import java.util.*
 
-class WeatherFragment : DefaultDailyWeatherForecastFragment() {
-
+    class WeatherFragment : DefaultDailyWeatherForecastFragment() {
     //======================================== Variable ============================================
     //------------------------------------------- View ---------------------------------------------
     var tv_weather:TextView ? = null

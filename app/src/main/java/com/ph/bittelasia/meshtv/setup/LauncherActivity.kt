@@ -2,7 +2,6 @@ package com.ph.bittelasia.meshtv.setup
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.ph.bittelasia.meshtv.R
 import com.ph.bittelasia.meshtv.setup.launcher.LauncherFragment
@@ -10,7 +9,6 @@ import com.ph.bittelasia.meshtvlibrary.fragment.launcher.DefaultLauncherFragment
 import com.ph.bittelasia.meshtvlibrary.viewmodel.signage.SignageViewModel
 import androidx.lifecycle.Observer
 import com.ph.bittelasia.meshtv.iptv.IPTV
-import com.ph.bittelasia.meshtv.iptv.app.AppFragment
 import com.ph.bittelasia.meshtv.setup.xmpp.XMPPFragment
 import com.ph.bittelasia.meshtvlibrary.fragment.data.XMPPUpdateFragment
 import com.ph.bittelasia.meshtvlibrary.xmpp.instant_display.Message

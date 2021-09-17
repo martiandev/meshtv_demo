@@ -19,7 +19,6 @@ class RoomFragment: Fragment()
     //----------------------------------------------------------------------------------------------
     //-------------------------------------------- Instance ----------------------------------------
     var stb:MeshSTB ? = null
-
     //----------------------------------------------------------------------------------------------
     //==============================================================================================
     //=========================================== Lifecycle ========================================
@@ -28,7 +27,6 @@ class RoomFragment: Fragment()
         this.stb = MeshSTB(context)
         MeshSTBPreference.get()!!.load(this.stb!!)
     }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return LayoutInflater.from(container!!.context).inflate(R.layout.fragment_room,container,false)
     }
