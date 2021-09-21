@@ -103,7 +103,7 @@ dependencies {
     implementation  "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     kapt            "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
-    implementation files('../libs/mtv-library-3.0.8.1-95-debug.aar')
+    implementation files('../libs/mtv-library-3.0.8.1-108-debug.aar')
     implementation files('../libs/ds-layout-library-1.1.7-debug.aar')
 
 }

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.ph.bittelasia.meshtv.R
+import com.ph.bittelasia.meshtvlibrary.api.APIManager
 import com.ph.bittelasia.meshtvlibrary.fragment.config.DefaultConfigurationFragment
 import com.ph.bittelasia.meshtvlibrary.preference.`object`.license.MeshLicense
 import com.ph.bittelasia.meshtvlibrary.preference.manager.LicensePreference
@@ -73,6 +74,7 @@ class ConfigurationFragment:DefaultConfigurationFragment()
         bt_submit!!.setOnClickListener {
             if(license!!.is_live==true)
             {
+//                APIManager.get()!!.updateTime(requireActivity())
                 startLive(et_host!!.text.toString(),et_port!!.text.toString(),et_room!!.text.toString())
             }
             else

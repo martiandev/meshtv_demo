@@ -3,6 +3,7 @@ package com.ph.bittelasia.meshtv.iptv
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import com.ph.bittelasia.meshtv.R
 import com.ph.bittelasia.meshtv.iptv.app.AppFragment
 import com.ph.bittelasia.meshtv.iptv.channel.TVFragment
@@ -13,11 +14,12 @@ import com.ph.bittelasia.meshtv.iptv.info.InfoFragment
 import com.ph.bittelasia.meshtv.iptv.message.MessageFragment
 import com.ph.bittelasia.meshtv.iptv.weather.WeatherFragment
 import com.ph.bittelasia.meshtv.setup.xmpp.XMPPFragment
+import com.ph.bittelasia.meshtvlibrary.api.APIManager
 import com.ph.bittelasia.meshtvlibrary.fragment.data.XMPPUpdateFragment
 import com.ph.bittelasia.meshtvlibrary.viewmodel.iptv.MeshWeatherDailyViewModel
 import com.ph.bittelasia.meshtvlibrary.xmpp.instant_display.Message
 
-class IPTV:AppCompatActivity(),
+class IPTV:FragmentActivity(),
         XMPPUpdateFragment.XMPPUpdateListener
 {
     //======================================== Variable ============================================
@@ -48,7 +50,7 @@ class IPTV:AppCompatActivity(),
     //==============================================================================================
     //========================================= Event ==============================================
     override fun onBackPressed() {
-         if(findViewById<View>(R.id.fc_app)!!.visibility==View.GONE)
+        if(findViewById<View>(R.id.fc_app)!!.visibility==View.GONE)
          {
             selectApplication(HomeFragment.APP_ID)
          }

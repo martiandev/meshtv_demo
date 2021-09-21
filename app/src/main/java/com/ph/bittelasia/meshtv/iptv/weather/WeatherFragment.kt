@@ -58,10 +58,10 @@ class WeatherFragment: Fragment(),ImageLoaderListener
     //==============================================================================================
     //=========================================== Method ===========================================
     fun bindViews(view:View) {
-        this.tv_temp = view.findViewById(R.id.tv_temp)
-        this.tv_desc = view.findViewById(R.id.tv_desc)
-        this.iv_icon = view.findViewById(R.id.iv_icon)
-        this.rv_forecast = view.findViewById(R.id.rv_forecast)
+        this.tv_temp        = view.findViewById(R.id.tv_temp)
+        this.tv_desc        = view.findViewById(R.id.tv_desc)
+        this.iv_icon        = view.findViewById(R.id.iv_icon)
+        this.rv_forecast    = view.findViewById(R.id.rv_forecast)
     }
     fun load() {
         this.weatherVM!!.get()
