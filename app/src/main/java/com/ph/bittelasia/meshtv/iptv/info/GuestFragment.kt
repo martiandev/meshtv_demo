@@ -33,15 +33,15 @@ class GuestFragment: DefaultGuestFragment()
     //==============================================================================================
     //======================================== DefaultGuestFragment ================================
     override fun onCheckIn(guest: MeshGuest) {
-        binding.tvGuest!!.text = guest.firstname+" " +guest!!.lastname
+        binding.tvGuest!!.text = guest.firstname+" "+guest!!.lastname
     }
 
     override fun onCheckOut(guest: MeshGuest) {
-        binding.tvGuest!!.text = guest.firstname + " " +guest!!.lastname
+        binding.tvGuest!!.text = guest.firstname +" "+guest!!.lastname
     }
 
     override fun onLoad(guest: MeshGuest) {
-        binding.tvGuest!!.text = guest.firstname + " " +guest!!.lastname
+        binding.tvGuest!!.text = guest.firstname +" "+guest!!.lastname
     }
     //==============================================================================================
 

@@ -3,11 +3,15 @@ package com.ph.bittelasia.meshtv.iptv.channel
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.ph.bittelasia.meshtv.databinding.ItemCategoryBinding
 import com.ph.bittelasia.meshtv.databinding.ItemCategorySelectedBinding
+import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshChannel
 import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshChannelCategory
+import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshFacility
+import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshFacilityCategory
 import com.ph.bittelasia.meshtvlibrary.viewmodel.iptv.MeshChannelViewModel
 
 class ChannelCategoryAdapter(): RecyclerView.Adapter<ChannelCategoryAdapter.ViewHolder>() {
@@ -23,6 +27,23 @@ class ChannelCategoryAdapter(): RecyclerView.Adapter<ChannelCategoryAdapter.View
     lateinit var activity:FragmentActivity
     lateinit var vm:MeshChannelViewModel
     var selected:Int = -1
+    var observer: Observer<List<MeshChannel>> = Observer {
+        if(it.size>0)
+        {
+            var ctr = 0
+            for(c in list!!)
+            {
+                if(c.id == it.get(0).channel_category_id)
+                {
+                    selected = ctr
+                    notifyDataSetChanged()
+                    break
+                }
+                ctr++
+            }
+
+        }
+    }
     //----------------------------------------------------------------------------------------------
     //--------------------------------------- Categories -------------------------------------------
     var list:List<MeshChannelCategory> ? = null
@@ -33,6 +54,7 @@ class ChannelCategoryAdapter(): RecyclerView.Adapter<ChannelCategoryAdapter.View
         this.activity = activity
         this.vm = MeshChannelViewModel.getViewModel(this.activity)
         this.list = list
+        this.vm!!.catResult.observe(this.activity,observer)
     }
     //==============================================================================================
     //======================================== Adapter =============================================

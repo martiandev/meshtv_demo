@@ -3,11 +3,13 @@ package com.ph.bittelasia.meshtv.iptv.facility
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.ph.bittelasia.meshtv.databinding.ItemFacilityCategorySelectedBinding
 import com.ph.bittelasia.meshtv.databinding.ItemFaciltyCategoryBinding
 import com.ph.bittelasia.meshtv.iptv.channel.ChannelCategoryAdapter
+import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshFacility
 import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshFacilityCategory
 import com.ph.bittelasia.meshtvlibrary.viewmodel.iptv.MeshFacilityViewModel
 
@@ -22,8 +24,26 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
     //----------------------------------------------------------------------------------------------
     //---------------------------------------- Instance --------------------------------------------
     var selected:Int = -1
+    var categories:List<MeshFacilityCategory> ?= null
     lateinit var activity:FragmentActivity
     var vm:MeshFacilityViewModel? = null
+    var observer:Observer<List<MeshFacility>> = Observer {
+        if(it.size>0)
+        {
+            var ctr = 0
+            for(c in categories!!)
+            {
+                if(c.id == it.get(0).category_id)
+                {
+                    selected = ctr
+                    notifyDataSetChanged()
+                    break
+                }
+                ctr++
+            }
+
+        }
+    }
     //----------------------------------------------------------------------------------------------
     //--------------------------------------- Categories -------------------------------------------
     var list:List<MeshFacilityCategory> ? = null
@@ -32,9 +52,11 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
     //======================================= Constructor ==========================================
     constructor(activity: FragmentActivity, list:List<MeshFacilityCategory>):this()
     {
+        this.categories = list!!
         this.activity = activity
         this.vm = MeshFacilityViewModel.getViewModel(this.activity)
         this.list = list
+        this.vm!!.catResult.observe(this.activity,observer)
     }
     //==============================================================================================
     //======================================== Adapter =============================================
