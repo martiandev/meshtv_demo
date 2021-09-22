@@ -50,6 +50,7 @@ class ChannelAdapter():RecyclerView.Adapter<ChannelAdapter.ViewHolder>(),ImageLo
             parent,
             false
         ))
+
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

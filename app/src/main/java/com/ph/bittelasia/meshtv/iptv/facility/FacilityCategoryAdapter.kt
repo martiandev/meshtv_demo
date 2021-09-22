@@ -5,7 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 import com.ph.bittelasia.meshtv.R
+import com.ph.bittelasia.meshtv.databinding.ItemCategoryBinding
+import com.ph.bittelasia.meshtv.databinding.ItemCategorySelectedBinding
+import com.ph.bittelasia.meshtv.databinding.ItemFacilityCategorySelectedBinding
+import com.ph.bittelasia.meshtv.databinding.ItemFaciltyCategoryBinding
 import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshChannelCategory
 import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshFacility
 import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshFacilityCategory
@@ -40,22 +45,20 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         if(viewType== SELECTED)
         {
-            return ViewHolder(LayoutInflater.from(parent.context!!).inflate(R.layout.item_category_selected,parent,false))
+            val itemBinding: ViewBinding = ItemFacilityCategorySelectedBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+            return ViewHolder(vm!!,itemBinding)
         }
         else
         {
-            return ViewHolder(LayoutInflater.from(parent.context!!).inflate(R.layout.item_category,parent,false))
+            val itemBinding:ViewBinding = ItemFaciltyCategoryBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+            return ViewHolder(vm!!,itemBinding)
         }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var cat:MeshFacilityCategory = this.list!!.get(position)
-        holder.itemView!!.setOnClickListener {
-            selected = position
-            notifyDataSetChanged()
-            vm!!.getCatResult(cat.id)
-        }
-        holder.tv_name!!.text = cat.category_name
+        holder.bind(cat)
+
     }
 
     override fun getItemViewType(position: Int): Int
@@ -74,12 +77,25 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
     override fun getItemCount(): Int { return list!!.size }
     //==============================================================================================
     //======================================= ViewHolder ===========================================
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var tv_name: TextView ? = itemView.findViewById(R.id.tv_name)
+    class ViewHolder(private val vm:MeshFacilityViewModel,private val binding:ViewBinding)
+        :RecyclerView.ViewHolder(binding.root)
+    {
+        fun bind(category: MeshFacilityCategory)
+        {
+            if(binding is ItemFacilityCategorySelectedBinding)
+            {
+                binding.category = category!!
+                binding.facilityVM = vm
+            }
+            else if(binding is ItemFaciltyCategoryBinding)
+            {
+                binding.category = category!!
+                binding.facilityVM = vm
+            }
 
+        }
     }
-
 
     //==============================================================================================
 }
