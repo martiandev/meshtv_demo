@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.ph.bittelasia.meshtv.R
+import com.ph.bittelasia.meshtv.databinding.FragmentIptvChannelBinding
+import com.ph.bittelasia.meshtv.databinding.FragmentIptvFacilityBinding
 import com.ph.bittelasia.meshtv.iptv.channel.ChannelCategoryFragment
 import com.ph.bittelasia.meshtv.iptv.channel.ChannelListFragment
 import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshFacility
@@ -17,6 +19,10 @@ import com.ph.bittelasia.meshtvlibrary.viewmodel.iptv.MeshFacilityViewModel
 
 class FacilityFragment: Fragment(){
     //=========================================== Variable =========================================
+    //-------------------------------------- Binding -----------------------------------------------
+    private var _binding: FragmentIptvFacilityBinding? = null
+    private val binding get() = _binding!!
+    //----------------------------------------------------------------------------------------------
     //------------------------------------------- Constant -----------------------------------------
     companion object
     {
@@ -36,9 +42,10 @@ class FacilityFragment: Fragment(){
     //==============================================================================================
     //=========================================== LifeCycle ========================================
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return LayoutInflater.from(container!!.context).inflate(R.layout.fragment_iptv_facility,container,false)
+        _binding = FragmentIptvFacilityBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -46,19 +53,7 @@ class FacilityFragment: Fragment(){
         {
             if(isAdded)
             {
-                this.facilityCategoryVM = MeshFacilityCategoryViewModel.getViewModel(requireActivity())
-                this.facilityVM = MeshFacilityViewModel.getViewModel(requireActivity())
-                this.categoryObserver = Observer {
-                    categoryFragment!!.updateCategories(it)
-
-                }
-                this.observer = Observer {
-                    this.facilityFragment!!.update(it)
-                }
-                facilityCategoryVM!!.results.observe(requireActivity(), this.categoryObserver!!)
-                facilityVM!!.catResult.observe(requireActivity(), this.observer!!)
                 attachFragments()
-                loadCategory()
             }
 
         }
@@ -71,20 +66,13 @@ class FacilityFragment: Fragment(){
     }
     //==============================================================================================
     //============================================ Method ==========================================
-    fun loadCategory()
-    {
-        this.facilityCategoryVM!!.get()
-    }
-    fun load()
-    {
-        this.facilityVM!!.get()
-    }
+
     fun attachFragments()
     {
-        this.categoryFragment = FacilityCategoryFragment(this.facilityVM!!)
+        this.categoryFragment = FacilityCategoryFragment()
         this.facilityFragment = FacilityListFragment()
         childFragmentManager.beginTransaction().add(R.id.fc_category,this.categoryFragment!!,"Category").commit()
-        childFragmentManager.beginTransaction().add(R.id.fc_object,this.facilityFragment!!,"Facility").commit()
+        childFragmentManager.beginTransaction().add(R.id.fc_object,this.facilityFragment!!,"Facilities").commit()
     }
     //==============================================================================================
 
