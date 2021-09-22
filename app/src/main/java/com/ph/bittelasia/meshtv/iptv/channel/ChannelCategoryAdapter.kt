@@ -63,7 +63,11 @@ class ChannelCategoryAdapter(): RecyclerView.Adapter<ChannelCategoryAdapter.View
     override fun getItemCount(): Int { return list!!.size }
     //==============================================================================================
     //======================================= ViewHolder ===========================================
-    class ViewHolder(private val vm:MeshChannelViewModel,private val binding: ViewBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(
+                private val vm:MeshChannelViewModel,
+                private val binding: ViewBinding
+            ) : RecyclerView.ViewHolder(binding.root)
+    {
         fun bind(category:MeshChannelCategory)
         {
             if(binding is ItemCategorySelectedBinding)

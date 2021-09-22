@@ -35,7 +35,6 @@ class ChannelListFragment:Fragment()
         this.observer = Observer {
             updateItems(it)
         }
-        this.objectViewModel = MeshChannelViewModel.getViewModel(requireActivity())
         this.objectViewModel!!.catResult.observe(requireActivity(),observer!!)
     }
     //==============================================================================================

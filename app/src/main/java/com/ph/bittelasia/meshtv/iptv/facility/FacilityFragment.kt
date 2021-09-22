@@ -59,11 +59,7 @@ class FacilityFragment: Fragment(){
         }
 
     }
-    override fun onDetach() {
-        super.onDetach()
-        facilityCategoryVM!!.results.removeObserver(categoryObserver!!)
-        facilityVM!!.results.removeObserver(observer!!)
-    }
+
     //==============================================================================================
     //============================================ Method ==========================================
 

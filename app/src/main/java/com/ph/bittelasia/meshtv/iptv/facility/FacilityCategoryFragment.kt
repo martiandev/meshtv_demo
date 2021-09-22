@@ -65,7 +65,7 @@ class FacilityCategoryFragment(): Fragment() {
     //======================================== Categories ==========================================
     fun updateCategories(categories:List<MeshFacilityCategory>)
     {
-        binding.rvCategory!!.adapter = FacilityCategoryAdapter(vm!!,categories!!)
+        binding.rvCategory!!.adapter = FacilityCategoryAdapter(requireActivity(),categories!!)
     }
     //==============================================================================================
 

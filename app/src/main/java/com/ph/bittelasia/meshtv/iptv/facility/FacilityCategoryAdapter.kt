@@ -1,20 +1,14 @@
 package com.ph.bittelasia.meshtv.iptv.facility
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.ph.bittelasia.meshtv.R
-import com.ph.bittelasia.meshtv.databinding.ItemCategoryBinding
-import com.ph.bittelasia.meshtv.databinding.ItemCategorySelectedBinding
 import com.ph.bittelasia.meshtv.databinding.ItemFacilityCategorySelectedBinding
 import com.ph.bittelasia.meshtv.databinding.ItemFaciltyCategoryBinding
-import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshChannelCategory
-import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshFacility
+import com.ph.bittelasia.meshtv.iptv.channel.ChannelCategoryAdapter
 import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshFacilityCategory
-import com.ph.bittelasia.meshtvlibrary.viewmodel.iptv.MeshChannelViewModel
 import com.ph.bittelasia.meshtvlibrary.viewmodel.iptv.MeshFacilityViewModel
 
 class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.ViewHolder>() {
@@ -28,6 +22,7 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
     //----------------------------------------------------------------------------------------------
     //---------------------------------------- Instance --------------------------------------------
     var selected:Int = -1
+    lateinit var activity:FragmentActivity
     var vm:MeshFacilityViewModel? = null
     //----------------------------------------------------------------------------------------------
     //--------------------------------------- Categories -------------------------------------------
@@ -35,9 +30,10 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
     //----------------------------------------------------------------------------------------------
     //==============================================================================================
     //======================================= Constructor ==========================================
-    constructor(vm: MeshFacilityViewModel, list:List<MeshFacilityCategory>):this()
+    constructor(activity: FragmentActivity, list:List<MeshFacilityCategory>):this()
     {
-        this.vm = vm
+        this.activity = activity
+        this.vm = MeshFacilityViewModel.getViewModel(this.activity)
         this.list = list
     }
     //==============================================================================================
@@ -56,20 +52,16 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var cat:MeshFacilityCategory = this.list!!.get(position)
-        holder.bind(cat)
+        holder.bind(this.list!!.get(position))
 
     }
 
     override fun getItemViewType(position: Int): Int
     {
-        if(position==selected)
+        return when(position==selected)
         {
-            return SELECTED
-        }
-        else
-        {
-            return NOT_SELECTED
+            true -> ChannelCategoryAdapter.SELECTED
+            else -> ChannelCategoryAdapter.NOT_SELECTED
         }
 
     }
@@ -78,8 +70,10 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
     //==============================================================================================
     //======================================= ViewHolder ===========================================
 
-    class ViewHolder(private val vm:MeshFacilityViewModel,private val binding:ViewBinding)
-        :RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(
+            private val vm:MeshFacilityViewModel,
+            private val binding:ViewBinding
+        ) :RecyclerView.ViewHolder(binding.root)
     {
         fun bind(category: MeshFacilityCategory)
         {

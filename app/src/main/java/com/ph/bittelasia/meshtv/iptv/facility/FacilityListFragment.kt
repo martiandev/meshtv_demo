@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ph.bittelasia.meshtv.databinding.FragmentIptvListBinding
 import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshFacility
+import com.ph.bittelasia.meshtvlibrary.viewmodel.iptv.MeshFacilityViewModel
 
 class FacilityListFragment:Fragment()
 {
@@ -16,7 +18,11 @@ class FacilityListFragment:Fragment()
     private var _binding: FragmentIptvListBinding? = null
     private val binding get() = _binding!!
     //----------------------------------------------------------------------------------------------
-   //==============================================================================================
+    //----------------------------------------- ViewModel ------------------------------------------
+    var objectViewModel: MeshFacilityViewModel? = null
+    var observer: Observer<List<MeshFacility>>? = null
+    //----------------------------------------------------------------------------------------------
+    //==============================================================================================
     //========================================= Lifecycle ==========================================
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentIptvListBinding.inflate(inflater, container, false)
@@ -26,10 +32,16 @@ class FacilityListFragment:Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvItems!!.layoutManager = LinearLayoutManager(requireActivity())
+        this.objectViewModel = MeshFacilityViewModel.getViewModel(requireActivity())
+        this.observer = Observer {
+            updateItems(it)
+        }
+        this.objectViewModel!!.catResult.observe(requireActivity(),observer!!)
+
     }
     //==============================================================================================
     //========================================= Method =============================================
-    fun update(items:List<MeshFacility>)
+    fun updateItems(items:List<MeshFacility>)
     {
         if(isAdded)
         {
