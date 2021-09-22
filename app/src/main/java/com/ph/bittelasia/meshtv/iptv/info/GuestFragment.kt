@@ -4,40 +4,44 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import com.ph.bittelasia.meshtv.R
+import com.ph.bittelasia.meshtv.databinding.FragmentGuestBinding
 import com.ph.bittelasia.meshtvlibrary.fragment.guest.DefaultGuestFragment
 import com.ph.bittelasia.meshtvlibrary.preference.`object`.iptv.MeshGuest
 
 class GuestFragment: DefaultGuestFragment()
 {
     //=========================================== Variable =========================================
-    //---------------------------------------------- View ------------------------------------------
-    var tv_guest:TextView ? = null
+    //------------------------------------------ Binding -------------------------------------------
+    private var _binding: FragmentGuestBinding? = null
+    private val binding get() = _binding!!
     //----------------------------------------------------------------------------------------------
     //==============================================================================================
     //=========================================== LifeCycle ========================================
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return LayoutInflater.from(container!!.context).inflate(R.layout.fragment_guest,container,false)
+        _binding = FragmentGuestBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.tv_guest = view.findViewById(R.id.tv_guest)
     }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
     //==============================================================================================
     //======================================== DefaultGuestFragment ================================
     override fun onCheckIn(guest: MeshGuest) {
-        this.tv_guest!!.text = guest.firstname + " " +guest!!.lastname
+        binding.tvGuest!!.text = guest.firstname+" " +guest!!.lastname
     }
 
     override fun onCheckOut(guest: MeshGuest) {
-        this.tv_guest!!.text = guest.firstname + " " +guest!!.lastname
+        binding.tvGuest!!.text = guest.firstname + " " +guest!!.lastname
     }
 
     override fun onLoad(guest: MeshGuest) {
-        this.tv_guest!!.text = guest.firstname + " " +guest!!.lastname
+        binding.tvGuest!!.text = guest.firstname + " " +guest!!.lastname
     }
     //==============================================================================================
 

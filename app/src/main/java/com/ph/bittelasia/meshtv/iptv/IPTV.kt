@@ -2,6 +2,7 @@ package com.ph.bittelasia.meshtv.iptv
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.ph.bittelasia.meshtv.R
@@ -16,11 +17,13 @@ import com.ph.bittelasia.meshtv.iptv.weather.WeatherFragment
 import com.ph.bittelasia.meshtv.setup.xmpp.XMPPFragment
 import com.ph.bittelasia.meshtvlibrary.api.APIManager
 import com.ph.bittelasia.meshtvlibrary.fragment.data.XMPPUpdateFragment
+import com.ph.bittelasia.meshtvlibrary.fragment.expiry.DefaultExpiryMonitorFragment
 import com.ph.bittelasia.meshtvlibrary.viewmodel.iptv.MeshWeatherDailyViewModel
 import com.ph.bittelasia.meshtvlibrary.xmpp.instant_display.Message
 
 class IPTV:FragmentActivity(),
-        XMPPUpdateFragment.XMPPUpdateListener
+        XMPPUpdateFragment.XMPPUpdateListener,
+        DefaultExpiryMonitorFragment.CallBack
 {
     //======================================== Variable ============================================
     //---------------------------------------- Fragment --------------------------------------------
@@ -122,5 +125,12 @@ class IPTV:FragmentActivity(),
     override fun onResetData() {}
     override fun onResetLicense() {}
     override fun onResetSTB() {}
+    //==============================================================================================
+    //===================================== DefaultExpiryCB ========================================
+    override fun expired() {
+    }
+    override fun onWarning(days: Int) {
+        infoFragment!!.displayExpiry(true)
+    }
     //==============================================================================================
 }

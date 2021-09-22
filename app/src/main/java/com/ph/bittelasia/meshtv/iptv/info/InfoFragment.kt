@@ -6,23 +6,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ph.bittelasia.meshtv.R
+import com.ph.bittelasia.meshtv.databinding.FragmentInformationBinding
 import com.ph.bittelasia.meshtv.setup.expire.ExpiryMonitorFragment
-import com.ph.bittelasia.meshtvlibrary.fragment.expiry.DefaultExpiryMonitorFragment
 
-class InfoFragment: Fragment(),
-        DefaultExpiryMonitorFragment.CallBack
+class InfoFragment: Fragment()
 {
     //========================================== Variable ==========================================
+    //------------------------------------------ Binding -------------------------------------------
+    private var _binding: FragmentInformationBinding? = null
+    private val binding get() = _binding!!
+    //----------------------------------------------------------------------------------------------
     //------------------------------------------ Fragment ------------------------------------------
     var guestFragment:GuestFragment ? = null
     var roomFragment:RoomFragment ? = null
     var weatherFragment:WeatherFragment ? = null
     var expirationMonitorFragment: ExpiryMonitorFragment ? = null
-    var fc_expiry:View ? = null
     //----------------------------------------------------------------------------------------------
     //==============================================================================================
     //========================================== LifeCycle =========================================
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? { return LayoutInflater.from(container!!.context).inflate(R.layout.fragment_information,container,false) }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        _binding = FragmentInformationBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.expirationMonitorFragment = ExpiryMonitorFragment()
@@ -33,14 +39,22 @@ class InfoFragment: Fragment(),
         childFragmentManager.beginTransaction().add(R.id.fc_guest_info,guestFragment!!,"Guest").commit()
         childFragmentManager.beginTransaction().add(R.id.fc_room_info,roomFragment!!,"Room").commit()
         childFragmentManager.beginTransaction().add(R.id.fc_time,weatherFragment!!,"weather").commit()
-        fc_expiry = view.findViewById(R.id.fc_expiry)
-        fc_expiry!!.visibility = View.GONE
+        binding.fcExpiry!!.visibility = View.GONE
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
     //==============================================================================================
-    //========================================== ExpiryMonitor =====================================
-    override fun expired() { fc_expiry!!.visibility = View.VISIBLE }
-    override fun onWarning(days: Int) { fc_expiry!!.visibility = View.VISIBLE }
+    //====================================== Expiry ==============================================
+    fun displayExpiry(shouldShow:Boolean)
+    {
+        binding.fcExpiry!!.visibility = when(shouldShow)
+        {
+            true->View.VISIBLE
+            else->View.GONE
+        }
+    }
     //==============================================================================================
-
-
 }

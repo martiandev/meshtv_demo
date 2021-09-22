@@ -1,0 +1,69 @@
+==============================================================
+=                         Crash Report                       =
+==============================================================
+ Room :404
+ Date :Tue Sep 21 06:17:16 GMT 2021
+ Package :com.ph.bittelasia.meshtv
+ Message :null
+ App :1.0
+==============================================================
+=                             Stack                          =
+==============================================================
+java.lang.NullPointerException
+	at com.ph.bittelasia.meshtv.iptv.info.InfoFragment.getBinding(InfoFragment.kt:17)
+	at com.ph.bittelasia.meshtv.iptv.info.InfoFragment.onViewCreated(InfoFragment.kt:39)
+	at androidx.fragment.app.Fragment.performViewCreated(Fragment.java:2987)
+	at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:546)
+	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:282)
+	at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:2189)
+	at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:2100)
+	at androidx.fragment.app.FragmentManager.execPendingActions(FragmentManager.java:2002)
+	at androidx.fragment.app.FragmentManager.dispatchStateChange(FragmentManager.java:3138)
+	at androidx.fragment.app.FragmentManager.dispatchActivityCreated(FragmentManager.java:3072)
+	at androidx.fragment.app.FragmentController.dispatchActivityCreated(FragmentController.java:251)
+	at androidx.fragment.app.FragmentActivity.onStart(FragmentActivity.java:502)
+	at android.app.Instrumentation.callActivityOnStart(Instrumentation.java:1391)
+	at android.app.Activity.performStart(Activity.java:7157)
+	at android.app.ActivityThread.handleStartActivity(ActivityThread.java:2937)
+	at android.app.servertransaction.TransactionExecutor.performLifecycleSequence(TransactionExecutor.java:180)
+	at android.app.servertransaction.TransactionExecutor.cycleToPath(TransactionExecutor.java:165)
+	at android.app.servertransaction.TransactionExecutor.executeLifecycleState(TransactionExecutor.java:142)
+	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:70)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1808)
+	at android.os.Handler.dispatchMessage(Handler.java:106)
+	at android.os.Looper.loop(Looper.java:193)
+	at android.app.ActivityThread.main(ActivityThread.java:6669)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:493)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:858)
+
+==============================================================
+=                             Status                         =
+==============================================================
+--------------------------------------------------------------
+-                            Network                         -
+--------------------------------------------------------------
+ MAC :02:00:00:00:00:00
+ API :dcbc490c950d5abceb456f626aec4f91
+--------------------------------------------------------------
+-                            License                         -
+--------------------------------------------------------------
+ Live :true
+ Status :Licensed
+ Expiry :Sat Sep 25 16:17:00 GMT 2021
+--------------------------------------------------------------
+-                         Configuration                      -
+--------------------------------------------------------------
+ Device ID :50
+ Last Update :Tue Sep 21 04:02:29 GMT 2021
+ JID :404_holidayinn
+ JPasssword :hello123
+ XHost :192.168.1.186
+ XPort :5222
+ Host :http://192.168.1.186
+ Port :8080
+ Version :4.0
+--------------------------------------------------------------
+-                              END                           -
+--------------------------------------------------------------
+==============================================================

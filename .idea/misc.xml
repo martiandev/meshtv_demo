@@ -10,6 +10,8 @@
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/drawable/system_button.xml" value="0.17447916666666666" />
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/activity_iptv.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/activity_launcher.xml" value="0.18489583333333334" />
+        <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/fragment_expiry_monitor.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/fragment_information.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/fragment_iptv_channel.xml" value="0.125" />
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/fragment_iptv_facility.xml" value="0.1" />
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/fragment_iptv_inbox.xml" value="0.1" />
@@ -17,6 +19,9 @@
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/fragment_iptv_message.xml" value="0.125" />
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/fragment_iptv_weather.xml" value="0.1875" />
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/item_app.xml" value="0.25" />
+        <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/item_category.xml" value="0.11220871327254306" />
+        <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/item_category_selected.xml" value="0.1" />
+        <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/item_channel.xml" value="0.11220871327254306" />
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/item_inbox.xml" value="0.1" />
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/item_inbox_read.xml" value="0.19427083333333334" />
         <entry key="..\:/Users/Mars/Desktop/September/TO/Code/MeshTV/app/src/main/res/layout/item_weather.xml" value="0.11043566362715299" />

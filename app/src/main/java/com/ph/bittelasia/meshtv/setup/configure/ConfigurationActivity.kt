@@ -3,7 +3,6 @@ package com.ph.bittelasia.meshtv.setup.configure
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ph.bittelasia.meshtv.R
-import com.ph.bittelasia.meshtvlibrary.api.APIManager
 
 class ConfigurationActivity:AppCompatActivity() {
     //========================================== Variable ==========================================
