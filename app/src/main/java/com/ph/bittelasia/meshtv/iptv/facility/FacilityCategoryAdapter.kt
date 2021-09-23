@@ -75,9 +75,7 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(this.list!!.get(position))
-
     }
-
     override fun getItemViewType(position: Int): Int
     {
         return when(position==selected)
@@ -85,9 +83,7 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
             true -> ChannelCategoryAdapter.SELECTED
             else -> ChannelCategoryAdapter.NOT_SELECTED
         }
-
     }
-
     override fun getItemCount(): Int { return list!!.size }
     //==============================================================================================
     //======================================= ViewHolder ===========================================

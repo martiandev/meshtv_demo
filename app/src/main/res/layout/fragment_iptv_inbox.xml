@@ -1,89 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/tv_label"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:background="@drawable/item_background"
-        android:textColor="@color/h_inn_green"
-        android:text="No Message Selected"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:visibility="visible"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+<layout>
+    <data>
+        <import type="android.text.Html"/>
+        <variable
+            name="message"
+            type="com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshMessage"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_details"
-        android:visibility="gone"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="8dp"
-        android:background="@drawable/item_background"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        >
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <TextView
-            android:id="@+id/tv_subject"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/h_inn_green"
+            android:id="@+id/tv_label"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:text="Front Desk"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            />
-
-        <TextView
-            android:id="@+id/tv_sender"
-            android:textSize="16sp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_subject"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/item_background"
             android:textColor="@color/h_inn_green"
-            android:textStyle="italic"
-            android:text="Front Desk"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            />
-
-        <View
-            android:id="@+id/v_divider"
-            app:layout_constraintTop_toBottomOf="@+id/tv_sender"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:background="@color/h_inn_green"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            />
-        <TextView
-            android:id="@+id/tv_content"
-            app:layout_constraintTop_toBottomOf="@+id/v_divider"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:padding="4dp"
+            android:text="No Message Selected"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:visibility="visible"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_details"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            android:background="@drawable/item_background"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <TextView
+                android:id="@+id/tv_subject"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/h_inn_green"
+                android:textStyle="bold"
+                android:text="@{String.valueOf(message.messg_subject)}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/tv_sender"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_subject"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="@color/h_inn_green"
+                android:textStyle="italic"
+                android:text="@{String.valueOf(message.messg_from)}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                />
+
+            <View
+                android:id="@+id/v_divider"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sender"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@color/h_inn_green"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                />
+            <TextView
+                android:id="@+id/tv_content"
+                app:layout_constraintTop_toBottomOf="@+id/v_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="4dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                />
+<!--            android:text="@{Html.fromHtml(message.messg_text)}"-->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

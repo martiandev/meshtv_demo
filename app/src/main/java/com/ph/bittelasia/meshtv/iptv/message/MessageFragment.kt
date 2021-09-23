@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.ph.bittelasia.meshtv.R
-import com.ph.bittelasia.meshtvlibrary.database.entity.iptv.MeshMessage
 import com.ph.bittelasia.meshtvlibrary.viewmodel.iptv.MeshMessageViewModel
 
-class MessageFragment : Fragment(),InboxFragment.ClickListener{
+class MessageFragment : Fragment(){
     //=========================================== Variable =========================================
     //------------------------------------------- Constant -----------------------------------------
     companion object
@@ -45,7 +44,6 @@ class MessageFragment : Fragment(),InboxFragment.ClickListener{
                 }
             })
             attachFragments()
-            load()
         }
     }
 
@@ -53,23 +51,11 @@ class MessageFragment : Fragment(),InboxFragment.ClickListener{
     //============================================ Method ==========================================
     fun attachFragments()
     {
-        this.inboxFragment = InboxFragment(this.mvm!!,this)
+        this.inboxFragment = InboxFragment()
         this.messageDetailFragment = MessageDetailFragment()
         childFragmentManager.beginTransaction().add(R.id.fc_category,this.inboxFragment!!,"Inbox").commit()
         childFragmentManager.beginTransaction().add(R.id.fc_object,this.messageDetailFragment!!,"Inbox").commit()
     }
-    fun load()
-    {
-        this.mvm!!.get()
-    }
     //==============================================================================================
-    override fun onClick(m: MeshMessage) {
-        if(messageDetailFragment!=null)
-        {
-            messageDetailFragment!!.update(m)
-        }
-    }
-    //==============================================================================================
-
 
 }

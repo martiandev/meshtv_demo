@@ -22,21 +22,17 @@ class InboxAdapter(): RecyclerView.Adapter<InboxAdapter.ViewHolder>(),APIListene
     //-------------------------------------------- Apps --------------------------------------------
     var messages:List<MeshMessage>? = null
     //----------------------------------------------------------------------------------------------
-    //------------------------------------------- Listener -----------------------------------------
-    var listener: InboxFragment.ClickListener? = null
-    //----------------------------------------------------------------------------------------------
-    //==============================================================================================
+     //==============================================================================================
     //======================================== Constructor =========================================
-    constructor(activity:FragmentActivity,messages:List<MeshMessage>,listener: InboxFragment.ClickListener):this()
+    constructor(activity:FragmentActivity,messages:List<MeshMessage>):this()
     {
         this.activity   = activity
         this.messages   = messages
         this.vm         = MeshMessageViewModel.getViewModel(this.activity!!)
-        this.listener   = listener
     }
     //==============================================================================================
     //======================================== AppAdapter ==========================================
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent:ViewGroup, viewType:Int): ViewHolder {
         if(viewType==1)
         {
             val itemBinding: ViewBinding = ItemInboxBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -48,8 +44,7 @@ class InboxAdapter(): RecyclerView.Adapter<InboxAdapter.ViewHolder>(),APIListene
             return ViewHolder(itemBinding!!,vm!!)
         }
     }
-
-    override fun getItemViewType(position: Int): Int {
+    override fun getItemViewType(position:Int): Int {
         var message:MeshMessage = this.messages!!.get(position)
         if(message!!.messg_status==2)
         {
@@ -57,41 +52,30 @@ class InboxAdapter(): RecyclerView.Adapter<InboxAdapter.ViewHolder>(),APIListene
         }
         return 1
     }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       holder.bind(this.messages!!.get(position))
-    }
-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) { holder.bind(this.messages!!.get(position)) }
     override fun getItemCount(): Int { return this.messages!!.size }
     //==============================================================================================
     //========================================= ViewHolder =========================================
-    class ViewHolder(private val binding:ViewBinding,private val vm:MeshMessageViewModel) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(private val binding:ViewBinding, private val vm:MeshMessageViewModel) : RecyclerView.ViewHolder(binding.root)
     {
         fun bind(message:MeshMessage)
         {
             if(binding is ItemInboxBinding)
             {
-                binding.message = message!!
-                binding.messageVM = vm!!
-
+                binding.message     = message!!
+                binding.messageVM   = vm!!
             }
             else if(binding is ItemInboxReadBinding)
             {
-                binding.message = message!!
-                binding.messageVM = vm!!
-
+                binding.message     = message!!
+                binding.messageVM   = vm!!
             }
-
         }
     }
     //==============================================================================================
     //========================================== APIListener =======================================
-    override fun onFail(result: Any, type: Int) {
-    }
-
-    override fun onSuccess(result: Any, type: Int) {
-
-    }
+    override fun onFail(result:Any, type:Int) {}
+    override fun onSuccess(result:Any, type:Int) {}
     //==============================================================================================
 }
 
