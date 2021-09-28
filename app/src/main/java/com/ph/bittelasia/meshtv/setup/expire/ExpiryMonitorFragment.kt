@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.ph.bittelasia.meshtv.databinding.FragmentExpiryMonitorBinding
 import com.ph.bittelasia.meshtvlibrary.fragment.expiry.DefaultExpiryMonitorFragment
+import com.ph.bittelasia.meshtvlibrary.preference.manager.LanguagePreference
 
 class ExpiryMonitorFragment:DefaultExpiryMonitorFragment() {
 
@@ -13,34 +14,34 @@ class ExpiryMonitorFragment:DefaultExpiryMonitorFragment() {
     //------------------------------------------ Binding -------------------------------------------
     private var _binding: FragmentExpiryMonitorBinding? = null
     private val binding get() = _binding!!
+
     //----------------------------------------------------------------------------------------------
     //==============================================================================================
     //============================================ Lifecycle =======================================
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentExpiryMonitorBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
     //==============================================================================================
     //========================================= MonitorFragment ====================================
-    override fun expired() {
-        binding!!.tvExpire!!.text = "Subscription expired"
-    }
-    override fun onWarning(days: Int) {
 
-        binding!!.tvExpire!!.text = "Subscription will expire in "+days+" day"+when{
+    override fun onWarning(days: Int) {
+        binding!!.tvExpire!!.text =       LanguagePreference.get()!!.getLang("FirstPartLicense")+" "+days+" day"+when{
             (days>1) -> "s"
             else -> ""
-        }+" please contact your service provider"
+        }+". "+      LanguagePreference.get()!!.getLang("SecondPartLicense")
     }
+    override fun minDays(): Int { return 30 }
+    override fun onDanger(hours: Int) {}
+    override fun onExpired() { requireActivity().finish() }
     //==============================================================================================
 
 }

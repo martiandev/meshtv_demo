@@ -2,18 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/cl_item"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="12dp"
-    android:layout_marginBottom="12dp"
-    android:layout_marginLeft="48dp"
-    android:layout_marginRight="48dp"
+    android:padding="4dp"
+    android:layout_margin="8dp"
+    android:background="@drawable/holiday_inn_borders"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/tv_day"
+        android:textAllCaps="true"
         android:textColor="@color/h_inn_green"
         android:layout_margin="4dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,6 +30,7 @@
         android:focusable="true"
         android:clickable="true"
         android:padding="8dp"
+        android:src="@drawable/d1_10d"
         android:layout_width="80dp"
         android:layout_height="80dp"/>
 
@@ -37,6 +39,7 @@
         android:textColor="@color/h_inn_green"
         android:layout_margin="8dp"
         android:textStyle="bold"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_icon"

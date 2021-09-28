@@ -3,9 +3,13 @@ package com.ph.bittelasia.meshtv.setup.configure
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.ph.bittelasia.meshtv.R
+import com.ph.bittelasia.meshtv.databinding.ActivitySetupBinding
 
 class ConfigurationActivity:AppCompatActivity() {
     //========================================== Variable ==========================================
+    //------------------------------------------ Binding -------------------------------------------
+    private lateinit var binding: ActivitySetupBinding
+    //----------------------------------------------------------------------------------------------
     //------------------------------------------ Fragment ------------------------------------------
     var configurationFragment:ConfigurationFragment ? = null
     //----------------------------------------------------------------------------------------------
@@ -13,7 +17,8 @@ class ConfigurationActivity:AppCompatActivity() {
     //========================================= LifeCycle ==========================================
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_setup)
+        binding = ActivitySetupBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         attachFragments()
     }
     //==============================================================================================

@@ -22,8 +22,7 @@ import com.ph.bittelasia.meshtvlibrary.viewmodel.iptv.MeshWeatherDailyViewModel
 import com.ph.bittelasia.meshtvlibrary.xmpp.instant_display.Message
 
 class IPTV:FragmentActivity(),
-        XMPPUpdateFragment.XMPPUpdateListener,
-        DefaultExpiryMonitorFragment.CallBack
+        XMPPUpdateFragment.XMPPUpdateListener
 {
     //======================================== Variable ============================================
     //---------------------------------------- Fragment --------------------------------------------
@@ -126,11 +125,5 @@ class IPTV:FragmentActivity(),
     override fun onResetLicense() {}
     override fun onResetSTB() {}
     //==============================================================================================
-    //===================================== DefaultExpiryCB ========================================
-    override fun expired() {
-    }
-    override fun onWarning(days: Int) {
-        infoFragment!!.displayExpiry(true)
-    }
-    //==============================================================================================
+
 }
