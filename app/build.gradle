@@ -6,8 +6,8 @@ plugins {
 }
 
 android {
-    compileSdk 30
 
+    compileSdk 30
     defaultConfig {
         applicationId "com.ph.bittelasia.meshtv"
         minSdk 23
@@ -16,23 +16,28 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildFeatures{
         dataBinding = true
         viewBinding = true
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
 }
 
 dependencies {
@@ -87,10 +92,10 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
 
     //XMPP
-    implementation('org.igniterealtime.smack:smack-tcp:4.2.2') {exclude group: 'xmlpull'}
-    implementation('org.igniterealtime.smack:smack-android-extensions:4.2.2') {exclude group: 'xmlpull'}
-    androidTestImplementation('org.igniterealtime.smack:smack-tcp:4.2.2') {exclude group: 'xmlpull'}
-    androidTestImplementation('org.igniterealtime.smack:smack-android-extensions:4.2.2') {exclude group: 'xmlpull'}
+    implementation('org.igniterealtime.smack:smack-tcp:4.2.2') { exclude group: 'xmlpull'}
+    implementation('org.igniterealtime.smack:smack-android-extensions:4.2.2') { exclude group: 'xmlpull'}
+    androidTestImplementation('org.igniterealtime.smack:smack-tcp:4.2.2') { exclude group: 'xmlpull'}
+    androidTestImplementation('org.igniterealtime.smack:smack-android-extensions:4.2.2') { exclude group: 'xmlpull'}
 
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
@@ -106,7 +111,7 @@ dependencies {
     implementation  "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     kapt            "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
-    implementation files('../libs/mtv-library-3.0.8.1-167-debug.aar')
+    implementation files('../libs/mtv-library-3.0.8.1-175-debug.aar')
     implementation files('../libs/ds-layout-library-1.1.7-debug.aar')
     kapt "com.android.databinding:compiler:3.4.0"
 

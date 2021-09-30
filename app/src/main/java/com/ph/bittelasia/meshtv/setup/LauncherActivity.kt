@@ -8,9 +8,11 @@ import com.ph.bittelasia.meshtv.setup.launcher.LauncherFragment
 import com.ph.bittelasia.meshtvlibrary.fragment.launcher.DefaultLauncherFragment
 import com.ph.bittelasia.meshtvlibrary.viewmodel.signage.SignageViewModel
 import androidx.lifecycle.Observer
+import com.ph.bittelasia.meshtv.ds.Ds
 import com.ph.bittelasia.meshtv.iptv.IPTV
 import com.ph.bittelasia.meshtv.setup.xmpp.XMPPFragment
 import com.ph.bittelasia.meshtvlibrary.fragment.data.XMPPUpdateFragment
+import com.ph.bittelasia.meshtvlibrary.fragment.ds.DSActivity
 import com.ph.bittelasia.meshtvlibrary.xmpp.instant_display.Message
 
 /**
@@ -69,9 +71,9 @@ class LauncherActivity:AppCompatActivity(),
             Observer {
                 if(it.size>0)
                 {
-                    //var i: Intent = Intent(this, DS::class.java)
-                    //i.putExtra(DSActivity.TAG_LAYOUT,it.get(0).layout_id)
-                    //startActivity(i)
+                    var i: Intent = Intent(this, Ds::class.java)
+                    i.putExtra(DSActivity.TAG_LAYOUT,it.get(0).layout_id)
+                    startActivity(i)
                 }
             }
         )

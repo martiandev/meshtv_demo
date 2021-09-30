@@ -45,7 +45,7 @@ class SplashFragment: DefaultSplashFragment()
 
     //==============================================================================================
     //==================================== DefaultSplashFragment ===================================
-    override fun onEnd() {
+     override fun onEnd() {
         super.onEnd()
         Log.d("FINAL-CHECK","("+this.javaClass::class.qualifiedName+") - ONEND")
 

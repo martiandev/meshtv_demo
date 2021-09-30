@@ -50,15 +50,17 @@ class SplashActivity:AppCompatActivity() {
         LicensePreference.get()!!.load(this.license!!)
     }
     fun attachFragments() {
-        Log.d("FINAL-CHECK","("+this.javaClass::class.qualifiedName+") - Attach Fragments")
+        Log.d("FINAL-CHECK","("+this::class.qualifiedName+") - Attach Fragments")
 
         if(this.license!!.is_ds!=true)
         {
+            Log.d("FINAL-CHECK","("+this::class.qualifiedName+") - Attach IPTV SPLASH")
             this.splashFragment = SplashFragment()
             supportFragmentManager.beginTransaction().add(R.id.fc_main,splashFragment!!,"Splash").commit()
         }
         else
         {
+            Log.d("FINAL-CHECK","("+this::class.qualifiedName+") - Attach DS SPLASH")
             this.splashDSFragment = SplashDSFragment()
             supportFragmentManager.beginTransaction().add(R.id.fc_main,splashDSFragment!!,"Splash DS").commit()
         }
