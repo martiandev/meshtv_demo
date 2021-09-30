@@ -43,7 +43,7 @@ class FacilityCategoryFragment(): Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(isAdded)
         {
-            binding.rvCategory!!.layoutManager = LinearLayoutManager(requireActivity())
+            binding.rvCategory.layoutManager = LinearLayoutManager(requireActivity())
             this.vm = MeshFacilityViewModel.getViewModel(requireActivity())
             this.categoryVm = MeshFacilityCategoryViewModel.getViewModel(requireActivity())
             this.categoryObserver = Observer {
@@ -53,7 +53,7 @@ class FacilityCategoryFragment(): Fragment() {
                 }
             }
             this.observer = Observer {
-                if(it.size>0) { selected = it!!.get(0)!!.category_id!! }
+                if(it.size>0) { selected = it!!.get(0).category_id!! }
                 else{ selected=0 }
             }
             this.vm!!.catResult.observe(requireActivity(), observer!!)
@@ -65,7 +65,7 @@ class FacilityCategoryFragment(): Fragment() {
     //======================================== Categories ==========================================
     fun updateCategories(categories:List<MeshFacilityCategory>)
     {
-        binding.rvCategory!!.adapter = FacilityCategoryAdapter(requireActivity(),categories!!)
+        binding.rvCategory.adapter = FacilityCategoryAdapter(requireActivity(),categories)
     }
     //==============================================================================================
 

@@ -26,10 +26,7 @@ class AppFragment:Fragment(){
         super.onAttach(context)
         appViewModel = AppViewModel.Companion.getViewModel(requireActivity())
         appViewModel!!.results.observe(requireActivity(), Observer {
-            if(binding.rvApps!=null)
-            {
-                binding.rvApps!!.adapter = AppAdapter(requireActivity(),it)
-            }
+            binding.rvApps.adapter = AppAdapter(requireActivity(),it)
         })
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -40,7 +37,7 @@ class AppFragment:Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvApps!!.layoutManager = LinearLayoutManager(view.context,LinearLayoutManager.HORIZONTAL,false)
+        binding.rvApps.layoutManager = LinearLayoutManager(view.context,LinearLayoutManager.HORIZONTAL,false)
         appViewModel!!.get()
     }
 

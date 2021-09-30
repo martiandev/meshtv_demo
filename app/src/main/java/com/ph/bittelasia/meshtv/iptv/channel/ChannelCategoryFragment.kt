@@ -38,7 +38,7 @@ class ChannelCategoryFragment:Fragment()
         super.onViewCreated(view, savedInstanceState)
         if(isAdded)
         {
-            binding.rvCategory!!.layoutManager = LinearLayoutManager(requireActivity())
+            binding.rvCategory.layoutManager = LinearLayoutManager(requireActivity())
             this.vm = MeshChannelViewModel.getViewModel(requireActivity())
             this.categoryVm = MeshChannelCategoryViewModel.getViewModel(requireActivity())
             this.categoryObserver = Observer {
@@ -48,7 +48,7 @@ class ChannelCategoryFragment:Fragment()
                 }
             }
             this.observer = Observer {
-                if(it.size>0) { selected = it!!.get(0)!!.channel_category_id!! }
+                if(it.size>0) { selected = it!!.get(0).channel_category_id!! }
                 else{ selected=0 }
             }
             this.vm!!.catResult.observe(requireActivity(), observer!!)
@@ -60,7 +60,7 @@ class ChannelCategoryFragment:Fragment()
     //======================================== Categories ==========================================
     fun updateCategories(categories:List<MeshChannelCategory>)
     {
-        binding.rvCategory!!.adapter = ChannelCategoryAdapter(requireActivity(),categories!!)
+        binding.rvCategory.adapter = ChannelCategoryAdapter(requireActivity(),categories)
     }
     //==============================================================================================
 }

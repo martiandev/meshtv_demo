@@ -17,13 +17,8 @@ import kotlinx.coroutines.*
 import java.io.File
 
 @Entities(entities = [
-    DefaultSplashFragment.CHANNEL,
-    DefaultSplashFragment.FACILITY,
-    DefaultSplashFragment.FOOD,
-    DefaultSplashFragment.VC,
-    DefaultSplashFragment.WEATHER,
-    DefaultSplashFragment.SHOP,
-    DefaultSplashFragment.APP
+DefaultSplashFragment.CHANNEL,
+DefaultSplashFragment.FACILITY
 ])
 class SplashFragment: DefaultSplashFragment()
 {
@@ -31,7 +26,7 @@ class SplashFragment: DefaultSplashFragment()
     //--------------------------------------------- View -------------------------------------------
     var tv_status:TextView ? = null
     var pb_splash:ProgressBar ? = null
-    var ctr:Int = 0;
+    var counter:Int = 0;
     //----------------------------------------------------------------------------------------------
     //==============================================================================================
     //=========================================== Lifecycle ========================================
@@ -43,7 +38,7 @@ class SplashFragment: DefaultSplashFragment()
         this.tv_status = view.findViewById(R.id.tv_status)
         this.pb_splash = view.findViewById(R.id.pb_splash)
         this.pb_splash!!.max=entityCount()
-        this.pb_splash!!.progress = ctr
+        this.pb_splash!!.progress = counter
         super.onViewCreated(view, savedInstanceState)
 
     }
@@ -52,8 +47,10 @@ class SplashFragment: DefaultSplashFragment()
     //==================================== DefaultSplashFragment ===================================
     override fun onEnd() {
         super.onEnd()
-        ctr++
-        this.pb_splash!!.progress = ctr
+        Log.d("FINAL-CHECK","("+this.javaClass::class.qualifiedName+") - ONEND")
+
+        counter++
+        this.pb_splash!!.progress = counter
         this.tv_status!!.text = "Data updated"
         finish()
 
@@ -71,8 +68,8 @@ class SplashFragment: DefaultSplashFragment()
     }
 
     override fun onDone(type: Int) {
-        ctr++
-        this.pb_splash!!.progress = ctr
+        counter++
+        this.pb_splash!!.progress = counter
         when(type)
         {
             DefaultSplashFragment.CHANNEL->{
@@ -90,9 +87,7 @@ class SplashFragment: DefaultSplashFragment()
             DefaultSplashFragment.VC-> {
                 this.tv_status!!.setText("Concierge Loaded")
             }
-            DefaultSplashFragment.WEATHER-> {
-                this.tv_status!!.setText("Weather Loaded")
-            }
+
             DefaultSplashFragment.SHOP-> {
                 this.tv_status!!.setText("Shops Loaded")
             }
@@ -123,9 +118,7 @@ class SplashFragment: DefaultSplashFragment()
             DefaultSplashFragment.VC-> {
                 this.tv_status!!.setText("Loading Concierge")
             }
-            DefaultSplashFragment.WEATHER-> {
-                this.tv_status!!.setText("Loading Weather")
-            }
+
             DefaultSplashFragment.SHOP-> {
                 this.tv_status!!.setText("Loading Shops")
             }

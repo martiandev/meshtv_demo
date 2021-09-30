@@ -75,7 +75,7 @@ class ChannelAdapter():RecyclerView.Adapter<ChannelAdapter.ViewHolder>(),ImageLo
                     url,
                     ivIcon)
                 CoroutineScope(Dispatchers.IO).async {
-                    il!!.donwload()
+                    il.donwload()
                 }
             }
         }
@@ -94,9 +94,9 @@ class ChannelAdapter():RecyclerView.Adapter<ChannelAdapter.ViewHolder>(),ImageLo
     }
     override fun onSuccess(file: File, iv: ImageView) {
         activity!!.runOnUiThread(java.lang.Runnable {
-            Glide.with(iv!!.rootView)
-                .load(file!!.absolutePath)
-                .into(iv!!)
+            Glide.with(iv.rootView)
+                .load(file.absolutePath)
+                .into(iv)
         })
     }
     //==============================================================================================

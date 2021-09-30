@@ -30,7 +30,7 @@ class ChannelListFragment:Fragment()
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        this.binding.rvItems!!.layoutManager = LinearLayoutManager(requireActivity())
+        this.binding.rvItems.layoutManager = LinearLayoutManager(requireActivity())
         this.objectViewModel = MeshChannelViewModel.getViewModel(requireActivity())
         this.observer = Observer {
             updateItems(it)
@@ -44,15 +44,15 @@ class ChannelListFragment:Fragment()
         if(isAdded)
         {
             var isHasItems:Boolean = items.size>0
-            this.binding.rvItems!!.visibility = when(isHasItems)
+            this.binding.rvItems.visibility = when(isHasItems)
             {
                 true ->{
-                    this.binding.rvItems!!.adapter = ChannelAdapter(requireActivity(),items)
+                    this.binding.rvItems.adapter = ChannelAdapter(requireActivity(),items)
                     View.VISIBLE
                 }
                 else -> View.GONE
             }
-            this.binding!!.tvLabel!!.visibility = when(isHasItems)
+            this.binding.tvLabel.visibility = when(isHasItems)
             {
                 true -> View.GONE
                 else -> View.VISIBLE

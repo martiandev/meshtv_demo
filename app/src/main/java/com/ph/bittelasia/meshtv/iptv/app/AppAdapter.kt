@@ -53,7 +53,7 @@ class AppAdapter(): RecyclerView.Adapter<AppAdapter.ViewHolder>(), ImageLoaderLi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var app : AppEntity = this.apps!!.get(position)
         holder.bind(activity!!,app,this)
-        if(app!!.app==MessageFragment.APP_ID)
+        if(app.app==MessageFragment.APP_ID)
         {
             vm!!.unread.observe(activity!!, Observer {
                holder.setBalloon(it.size)
@@ -70,9 +70,9 @@ class AppAdapter(): RecyclerView.Adapter<AppAdapter.ViewHolder>(), ImageLoaderLi
     override fun onFail(message: String) {}
     override fun onSuccess(file: File, iv: ImageView) {
         activity!!.runOnUiThread(java.lang.Runnable {
-            Glide.with(iv!!.rootView)
-                .load(file!!.absolutePath)
-                .into(iv!!)
+            Glide.with(iv.rootView)
+                .load(file.absolutePath)
+                .into(iv)
         })
     }
     //==============================================================================================
@@ -91,7 +91,7 @@ class AppAdapter(): RecyclerView.Adapter<AppAdapter.ViewHolder>(), ImageLoaderLi
                             url,
                             ivIcon)
                 CoroutineScope(Dispatchers.IO).async {
-                    il!!.donwload()
+                    il.donwload()
                 }
             }
         }
@@ -102,7 +102,7 @@ class AppAdapter(): RecyclerView.Adapter<AppAdapter.ViewHolder>(), ImageLoaderLi
             itemBinding.app = app
             itemBinding.listener = listener
             itemBinding.ivIcon.setOnClickListener {
-                (activity as IPTV).selectApplication(app!!.app!!)
+                (activity as IPTV).selectApplication(app.app!!)
             }
 
         }

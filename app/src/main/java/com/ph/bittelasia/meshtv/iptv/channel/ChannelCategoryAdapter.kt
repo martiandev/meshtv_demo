@@ -54,7 +54,7 @@ class ChannelCategoryAdapter(): RecyclerView.Adapter<ChannelCategoryAdapter.View
         this.activity = activity
         this.vm = MeshChannelViewModel.getViewModel(this.activity)
         this.list = list
-        this.vm!!.catResult.observe(this.activity,observer)
+        this.vm.catResult.observe(this.activity,observer)
     }
     //==============================================================================================
     //======================================== Adapter =============================================

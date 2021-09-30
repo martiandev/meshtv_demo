@@ -31,7 +31,7 @@ class FacilityListFragment:Fragment()
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvItems!!.layoutManager = LinearLayoutManager(requireActivity())
+        binding.rvItems.layoutManager = LinearLayoutManager(requireActivity())
         this.objectViewModel = MeshFacilityViewModel.getViewModel(requireActivity())
         this.observer = Observer {
             updateItems(it)
@@ -46,15 +46,15 @@ class FacilityListFragment:Fragment()
         if(isAdded)
         {
             var isHasItems:Boolean = items.size>0
-            this.binding.rvItems!!.visibility = when(isHasItems)
+            this.binding.rvItems.visibility = when(isHasItems)
             {
                 true ->{
-                    this.binding.rvItems!!.adapter = FacilityAdapter(requireActivity(),items)
+                    this.binding.rvItems.adapter = FacilityAdapter(requireActivity(),items)
                     View.VISIBLE
                 }
                 else -> View.GONE
             }
-            this.binding!!.tvLabel!!.visibility = when(isHasItems)
+            this.binding.tvLabel.visibility = when(isHasItems)
             {
                 true -> View.GONE
                 else -> View.VISIBLE

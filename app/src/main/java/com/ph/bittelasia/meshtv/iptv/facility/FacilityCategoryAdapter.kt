@@ -52,7 +52,7 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
     //======================================= Constructor ==========================================
     constructor(activity: FragmentActivity, list:List<MeshFacilityCategory>):this()
     {
-        this.categories = list!!
+        this.categories = list
         this.activity = activity
         this.vm = MeshFacilityViewModel.getViewModel(this.activity)
         this.list = list
@@ -97,12 +97,12 @@ class FacilityCategoryAdapter(): RecyclerView.Adapter<FacilityCategoryAdapter.Vi
         {
             if(binding is ItemFacilityCategorySelectedBinding)
             {
-                binding.category = category!!
+                binding.category = category
                 binding.facilityVM = vm
             }
             else if(binding is ItemFaciltyCategoryBinding)
             {
-                binding.category = category!!
+                binding.category = category
                 binding.facilityVM = vm
             }
 

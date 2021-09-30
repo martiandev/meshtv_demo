@@ -47,7 +47,7 @@ class FacilityAdapter():RecyclerView.Adapter<FacilityAdapter.ViewHolder>(),Image
     //==============================================================================================
     //========================================== Adapter ===========================================
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemFacilityBinding.inflate(LayoutInflater.from(parent!!.context),parent,false))
+        return ViewHolder(ItemFacilityBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -72,7 +72,7 @@ class FacilityAdapter():RecyclerView.Adapter<FacilityAdapter.ViewHolder>(),Image
                     url,
                     ivIcon)
                 CoroutineScope(Dispatchers.IO).async {
-                    il!!.donwload()
+                    il.donwload()
                 }
             }
         }
@@ -89,9 +89,9 @@ class FacilityAdapter():RecyclerView.Adapter<FacilityAdapter.ViewHolder>(),Image
     }
     override fun onSuccess(file: File, iv: ImageView) {
         activity!!.runOnUiThread(java.lang.Runnable {
-            Glide.with(iv!!.rootView)
-                .load(file!!.absolutePath)
-                .into(iv!!)
+            Glide.with(iv.rootView)
+                .load(file.absolutePath)
+                .into(iv)
         })
     }
     //==============================================================================================

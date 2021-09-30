@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ph.bittelasia.meshtv.R
 import com.ph.bittelasia.meshtv.databinding.FragmentInformationBinding
-import com.ph.bittelasia.meshtv.setup.expire.ExpiryMonitorFragment
 
 class InfoFragment: Fragment()
 {
@@ -20,7 +19,7 @@ class InfoFragment: Fragment()
     var guestFragment:GuestFragment ? = null
     var roomFragment:RoomFragment ? = null
     var weatherFragment:WeatherFragment ? = null
-    var expirationMonitorFragment: ExpiryMonitorFragment ? = null
+    var expirationMonitorFragment: ExpiryMonitorFragment? = null
     //----------------------------------------------------------------------------------------------
     //==============================================================================================
     //========================================== LifeCycle =========================================
@@ -39,7 +38,6 @@ class InfoFragment: Fragment()
         childFragmentManager.beginTransaction().add(R.id.fc_guest_info,guestFragment!!,"Guest").commit()
         childFragmentManager.beginTransaction().add(R.id.fc_room_info,roomFragment!!,"Room").commit()
         childFragmentManager.beginTransaction().add(R.id.fc_time,weatherFragment!!,"weather").commit()
-        binding.fcExpiry!!.visibility = View.GONE
     }
 
     override fun onDestroyView() {
@@ -47,14 +45,5 @@ class InfoFragment: Fragment()
         _binding = null
     }
     //==============================================================================================
-    //====================================== Expiry ==============================================
-    fun displayExpiry(shouldShow:Boolean)
-    {
-        binding.fcExpiry!!.visibility = when(shouldShow)
-        {
-            true->View.VISIBLE
-            else->View.GONE
-        }
-    }
-    //==============================================================================================
+
 }
